@@ -173,4 +173,154 @@ initial_data = [
         'neighboring_spots': [22, 27, 29],
         'port': None
     },
+    # 29
+    {
+        'connected_tiles': [5, 14, 15],
+        'neighboring_spots': [28, 30, 44],
+        'port': None
+    },
+    # 30
+    {
+        'connected_tiles': [14, 15, 18],
+        'neighboring_spots': [20, 29, 31],
+        'port': None
+    },
+    # 31
+    {
+        'connected_tiles': [15, 16, 18],
+        'neighboring_spots': [30, 32, 42],
+        'port': None
+    },
+    # 32
+    {
+        'connected_tiles': [16, 17, 18],
+        'neighboring_spots': [18, 31, 33],
+        'port': None
+    },
+    # 33
+    {
+        'connected_tiles': [9, 16, 17],
+        'neighboring_spots': [32, 34, 40],
+        'port': None
+    },
+    # 34
+    {
+        'connected_tiles': [9, 10, 17],
+        'neighboring_spots': [33, 35, 16],
+        'port': None
+    },
+    # 35
+    {
+        'connected_tiles': [9, 10],
+        'neighboring_spots': [36, 38],
+        'port': 7
+    },
+    # 36
+    {
+        'connected_tiles': [10],
+        'neighboring_spots': [35, 37],
+        'port': None
+    },
+    # 37
+    {
+        'connected_tiles': [10],
+        'neighboring_spots': [36, 15],
+        'port': None
+    },
+    # 38
+    {
+        'connected_tiles': [9],
+        'neighboring_spots': [35, 39],
+        'port': 7
+    },
+    # 39
+    {
+        'connected_tiles': [8, 9],
+        'neighboring_spots': [38, 40, 53],
+        'port': None
+    },
+    # 40
+    {
+        'connected_tiles': [8, 9, 16],
+        'neighboring_spots': [33, 39, 41],
+        'port': None
+    },
+    # 41
+    {
+        'connected_tiles': [7, 8, 16],
+        'neighboring_spots': [40, 42, 51],
+        'port': None
+    },
+    # 42
+    {
+        'connected_tiles': [7, 15, 16],
+        'neighboring_spots': [41, 43, 31],
+        'port': None
+    },
+    # 43
+    {
+        'connected_tiles': [6, 7, 15],
+        'neighboring_spots': [42, 44, 49],
+        'port': None
+    },
+    # 44
+    {
+        'connected_tiles': [5, 6, 15],
+        'neighboring_spots': [29, 43, 45],
+        'port': None
+    },
+    # 45
+    {
+        'connected_tiles': [5, 6],
+        'neighboring_spots': [46, 47],
+        'port': 4
+    },
+    # 46
+    {
+        'connected_tiles': [5],
+        'neighboring_spots': [27, 45],
+        'port': 4
+    },
+    # 47
+    {
+        'connected_tiles': [6],
+        'neighboring_spots': [45, 48],
+        'port': None
+    },
+    # 48
+    {
+        'connected_tiles': [6],
+        'neighboring_spots': [47, 49],
+        'port': None
+    },
+    # 49
+    {
+        'connected_tiles': [6, 7],
+        'neighboring_spots': [43, 48, 50],
+        'port': 5
+    },
+    # 50
+    {
+        'connected_tiles': [7],
+        'neighboring_spots': [49, 51],
+        'port': 5
+    },
+    # 51
+    {
+        'connected_tiles': [7, 8],
+        'neighboring_spots': [41, 50, 52],
+        'port': None
+    },
+    # 52
+    {
+        'connected_tiles': [8],
+        'neighboring_spots': [51, 53],
+        'port': 6
+    },
+    # 53
+    {
+        'connected_tiles': [8],
+        'neighboring_spots': [39, 52],
+        'port': 6
+    }
 ]

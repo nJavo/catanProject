@@ -1,3 +1,5 @@
+from initialData import initial_data
+
 class SettlementSpot:
     def __init__(self, port=None):
         self.port = port
@@ -6,18 +8,22 @@ class SettlementSpot:
         self.building = None
 
 class SettlementLogic:    
-    def create_board_graph(board, ports):
-        # Create an empty list for the settlement spots
+    @staticmethod
+    def setup_board(board, ports):
+    # Create the list of SettlementSpot instances
         settlement_spots = [SettlementSpot() for _ in range(54)]
 
-        settlement_spots[0].connected_tiles = [board[0], board[1], board[2]]
-        settlement_spots[0].neighboring_spots = [settlement_spots[1], settlement_spots[2], settlement_spots[3]]
-        settlement_spots[0].port = ports[0]
-
+        # For each SettlementSpot, use the initial data to assign its attributes
+        for i, spot_data in enumerate(initial_data):
+            spot = settlement_spots[i]
+            spot.connected_tiles = [board[j] for j in spot_data['connected_tiles']]
+            spot.neighboring_spots = [settlement_spots[j] for j in spot_data['neighboring_spots']]
+            if spot_data['port'] != None:
+                spot.port = ports[spot_data['port']]
 
         return settlement_spots
 
-
+    @staticmethod
     def is_spot_available(spot):
         if spot.building is not None:
             return False
