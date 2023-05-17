@@ -31,3 +31,22 @@ class SettlementLogic:
             if neighbor.building is not None:
                 return False
         return True
+    
+    @staticmethod
+    def print_spots(settlement_spots, board):
+        for i, spot in enumerate(settlement_spots):
+            connected_tile_indices = [board.index(tile) for tile in spot.connected_tiles]
+            neighboring_spot_indices = [settlement_spots.index(neighbor) for neighbor in spot.neighboring_spots]
+            print(f'Spot {i}:')
+            print(f'  Connected tiles: {connected_tile_indices}')
+            print(f'  Neighboring spots: {neighboring_spot_indices}')
+            print(f'  Port: {spot.port}')
+            print(f'  Building: {spot.building}\n')
+
+    @staticmethod
+    def build_settlement(settlement_spots, spot):
+        if SettlementLogic.is_spot_available(spot):
+            spot.building = 'Settlement'
+            print(f'A settlement has been built on spot {settlement_spots.index(spot)}.')
+        else:
+            print('This spot is not available for building.')
