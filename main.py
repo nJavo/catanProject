@@ -1,5 +1,8 @@
 import boardLogic
 import devLogic
+import settlementLogic
+
+
 
 def main():
     board = boardLogic.create_board()
