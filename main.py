@@ -6,9 +6,10 @@ def main():
 
     boardLogic.print_board(board)
 
-    deck = devLogic.Deck
-    deck.initialize_deck(deck)
-    print(deck.draw_card(deck))
+    deck = devLogic.Deck()
+    deck.initialize_deck()
+    deck.shuffle()
+    print(deck.draw_card().type)
 
 if __name__ == "__main__":
     main()
