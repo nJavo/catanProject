@@ -18,9 +18,6 @@ def create_board():
     
     startNumber = random.randint(0, 11)
 
-    # print(resources)
-    # print(startNumber)
-
     ring_1 = [None] * 12
     ring_2 = [None] * 6
     ring_3 = [None]
@@ -49,9 +46,10 @@ def create_board():
     if resource != 'Desert':
         ring_3[0] = numbers.pop(0)
 
-    number_placements = ring_1 + ring_2 + ring_3        
+    number_placements = ring_1 + ring_2 + ring_3      
 
-    #print(number_placements)
+    # print("RESOURCES: ", resources)
+    # print("NUMBERS: ", number_placements)  
     
     board = [Tile(resource, number) for resource, number in zip(resources, number_placements)]      
 

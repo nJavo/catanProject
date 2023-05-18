@@ -44,9 +44,11 @@ class SettlementLogic:
             print(f'  Building: {spot.building}\n')
 
     @staticmethod
-    def build_settlement(settlement_spots, spot):
+    def build_settlement(settlement_spots, spot, player):
         if SettlementLogic.is_spot_available(spot):
-            spot.building = 'Settlement'
-            print(f'A settlement has been built on spot {settlement_spots.index(spot)}.')
+            spot.building = {'type': 'Settlement', 'player': player.player_id}
+            print(f'Player {player.player_id} has built a settlement on spot {settlement_spots.index(spot)}.')
+            player.place_settlement()
+            player.add_building('Settlement', settlement_spots.index(spot))
         else:
             print('This spot is not available for building.')
