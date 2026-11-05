@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Catan Lab move advisor",
+  "version": "0.1.0",
+  "description": "Screenshots the visible tab when you ask and gets a move from your local Catan Lab server. Doesn't read or control colonist.io.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs9HCJ9Yi87AKZRa4y3zqzURlElCBA2a1fcZo3EZ3D0MDHDm0HPw/ECZjLAP+WYMIRsIiLRu/2LY5YZt05n2efE+l2NWiB3uUOT9K3qPG1B/PIG2015IrFxt9zFuwQeUE2xKkhmDAPY2Y4hwrwkTyi+x8lLnANESrF5QOvEC9Zun/NQZIzQUtVGkK1pK3j3QNych0APDk5A59JJWUqxlnouJfY/f0dI9hZSqxc6IgDx1E86KtkCXuxGZjLQUlNIpOSxaZYBN7wVf0MGbrELiPM7sy2Ffx1Hx/GNlSerFEMv0F9PEUMoOZ2nXXBFsOX/wYlceDx5vTDb7E9L7Gf63SlwIDAQAB",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8000/*"
+  ],
+  "optional_host_permissions": [
+    "http://127.0.0.1:*/*",
+    "http://localhost:*/*"
+  ],
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Catan advisor"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "analyze": {
+      "suggested_key": {
+        "default": "Alt+Shift+K"
+      },
+      "description": "Analyze the visible tab"
+    }
+  }
+}

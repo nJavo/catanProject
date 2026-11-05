@@ -1,0 +1,88 @@
+/* Analysis Mode: touch board, Live tab, and compact (tablet / phone) layouts. */
+.an-editor, .an-live { display: flex; flex-direction: column; gap: var(--s2); }
+.an-lefttabs { align-self: stretch; display: flex; flex: none; }
+.an-lefttabs button { flex: 1; }
+.an-touch { position: relative; width: 100%; height: 100%; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.an-zoomable { width: 100%; height: 100%; transform-origin: center; }
+.an-zoom { position: absolute; right: 10px; bottom: 10px; display: flex; flex-direction: column; gap: 6px; }
+.an-zoom .btn { width: 44px; height: 44px; padding: 0; font-size: 22px; border-radius: 12px; background: rgba(28,51,64,.92); }
+.an-armed button { pointer-events: auto; }
+.an-armed { pointer-events: none; position: absolute; left: 50%; top: 10px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; background: var(--hull); border: 1px solid var(--rope-hi); border-radius: var(--r-pill); padding: 6px 8px 6px 16px; box-shadow: var(--shadow-lift); white-space: nowrap; font-weight: 700; }
+.an-live-who { font-family: var(--f-display); font-size: 18px; }
+.an-live-head { border-left: 4px solid var(--pc); }
+.an-estimate { margin: 0; color: var(--sand); }
+.an-dice { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.an-die { min-height: 48px; border-radius: 12px; border: 2px solid #b49a6a; background: #f6efdc; color: #2b2420; font-family: var(--f-display); font-weight: 800; font-size: 22px; cursor: pointer; }
+.an-die.red { color: #b3261e; }
+.an-die.seven { background: #3a2a2a; color: #ffd8cf; border-color: var(--danger); }
+.an-roll-result ul { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.an-roll-result li { display: flex; align-items: center; gap: 6px; }
+.an-build { display: flex; flex-wrap: wrap; gap: 6px; }
+.an-build .btn { flex: 1 1 30%; }
+.an-col { display: flex; flex-direction: column; gap: 6px; }
+.an-tabs { display: flex; gap: 4px; background: var(--hull); border-radius: var(--r-panel); padding: 4px; }
+.an-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 10px; background: transparent; color: var(--mist); font-weight: 700; font-size: 15px; cursor: pointer; }
+.an-tabs button.on { background: var(--rope); color: #22180a; }
+.an-pane { min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: var(--s2); -webkit-overflow-scrolling: touch; }
+.an-more { position: relative; }
+.an-more summary { list-style: none; }
+.an-more summary::-webkit-details-marker { display: none; }
+.an-more-menu { position: absolute; right: 0; top: calc(100% + 6px); z-index: 15; display: flex; flex-direction: column; gap: 6px; background: var(--hull); border: 1px solid var(--hull-3); border-radius: 12px; padding: 8px; box-shadow: var(--shadow-lift); min-width: 190px; }
+
+/* tablet landscape: board left, tabbed panel right */
+.an.compact {
+  height: 100dvh; grid-template-columns: minmax(0, 1fr) 380px; grid-template-rows: auto auto minmax(0, 1fr);
+  grid-template-areas: "top top" "board tabs" "board pane"; gap: 6px; padding: 6px;
+}
+.an.compact .an-tabs { grid-area: tabs; }
+.an.compact .an-pane { grid-area: pane; }
+.an.compact.tab-board { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "top" "board" "tabs"; }
+.an.compact .an-top { flex-wrap: nowrap; }
+.an.compact .an-top .banner-instr { font-size: 16px; }
+.an.compact .an-top .banner-phase { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.an.compact .an-actions { flex-wrap: nowrap; }
+.an.compact .an-cands .an-roll .ratebar { display: none; }
+
+/* tablet portrait and phone: board on top, tabs, then the panel */
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 640px) {
+  .an.compact { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 46fr) auto minmax(0, 54fr); grid-template-areas: "top" "board" "tabs" "pane"; }
+  .an.compact.tab-board { grid-template-rows: auto minmax(0, 1fr) auto; }
+}
+@media (max-width: 640px) {
+  .an.compact { padding: 4px; gap: 4px; }
+  .an.compact .an-top { padding: 4px 6px; gap: 6px; }
+  .an.compact .an-top { flex-wrap: wrap; }
+  .an.compact .an-top .banner-text { order: 10; flex-basis: 100%; }
+  .an.compact .an-top .an-actions { margin-left: auto; }
+  .an.compact .an-top .banner-phase { display: none; }
+  .an.compact .an-top .banner-instr { font-size: 14px; white-space: normal; line-height: 1.15; }
+  .an.compact .an-valid { font-size: 12px; padding: 2px 8px; }
+  .an.compact .an-mock { font-size: 11px; padding: 2px 8px; }
+  .an.compact .board-wrap { border-radius: 12px; }
+  /* the branch bar now sits above the board: give the board row the room the near-empty pane had */
+  .an.compact:not(.tab-board):has(.an-branch) { grid-template-rows: auto minmax(0, 72fr) auto minmax(0, 28fr); }
+  .an.compact .an-branch-log { max-height: 64px; }
+  .an.compact .an-errors { max-width: calc(100% - 70px); font-size: 12px; }
+  .an-dice { grid-template-columns: repeat(4, 1fr); }
+  .an-armed { white-space: normal; width: max-content; max-width: 92%; }
+  /* The pill would cover the top row of the island; the pane's armed button already says "Tap the board…" and cancels.
+     Kept for screen readers (role=status) and shown again on the Board tab, where the pane is hidden. */
+  .an.compact:not(.tab-board) .an-armed { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); border: 0; }
+}
+
+/* finger-sized controls (>= 44 px) on compact layouts and coarse pointers */
+.an.compact .btn, .an.compact .chip, .an.compact .an-seat, .an.compact select, .an.compact input:not([type=checkbox]),
+.an.compact .segmented button { min-height: 44px; }
+.an.compact .chip { padding: 6px 12px; font-size: 14px; }
+.an.compact .stepper button { width: 44px; height: 44px; font-size: 20px; }
+.an.compact .an-res .stepper button { width: 100%; min-width: 44px; height: 44px; }
+.an.compact .an-res-cell { padding: 4px 1px; }
+.an.compact .an-token { width: 44px; height: 44px; }
+.an.compact .an-check input, .an.compact .an-checks input { width: 22px; height: 22px; }
+.an.compact .an-check, .an.compact .an-checks label { min-height: 44px; display: flex; align-items: center; gap: 8px; }
+.an.compact .an-moves li { min-height: 44px; }
+.an.compact .an-cands td { padding: 8px 4px; }
+@media (pointer: coarse) {
+  .an .stepper button { min-width: 44px; min-height: 44px; }
+  .an .btn, .an .chip { min-height: 44px; }
+}
