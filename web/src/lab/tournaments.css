@@ -1,0 +1,106 @@
+/* Lab > Tournaments. Tokens come from styles.css. */
+.tournaments { grid-template-columns: 280px minmax(0, 1fr); }
+.t-list { position: sticky; top: var(--s4); max-height: calc(100vh - 140px); overflow-y: auto; padding-right: 4px; }
+.t-list .run-item { gap: 2px; }
+.t-list .run-item strong { font-size: 14px; }
+.t-item-lineup { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--sand) !important; }
+.t-across-btn { margin-bottom: var(--s2); border-style: dashed; }
+
+.t-detail { gap: var(--s4); }
+.t-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0 var(--s4); }
+.t-head > span { white-space: nowrap; } /* DS16-05: the date drops under the title on a phone instead of wrapping to three lines */
+.t-lineup { margin: 4px 0 0; color: var(--sand); font-family: var(--f-display); font-size: 18px; }
+.t-section { display: flex; flex-direction: column; gap: var(--s2); margin-top: var(--s3); }
+.t-section > p { margin: 0; }
+/* Scroll cue (DS6-10): a light glow on an edge (dark shadows vanish on --hull) that has more columns behind it. The "local" covers scroll
+   with the content and hide the "scroll" shadows once that edge is reached; cover colour = card colour. */
+.t-scroll { overflow-x: auto;
+  background:
+    linear-gradient(to right, var(--hull) 30%, transparent) left / 40px 100% no-repeat local,
+    linear-gradient(to left, var(--hull) 30%, transparent) right / 40px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(169, 190, 196, .55), transparent) left / 22px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(169, 190, 196, .55), transparent) right / 22px 100% no-repeat scroll; }
+.lab-card h3 .small { font-family: var(--f-ui); font-weight: 400; }
+
+.t-summary { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--s2) var(--s4); margin: 0;
+  background: var(--hull); border-radius: 10px; padding: var(--s3) var(--s4); }
+.t-summary div { min-width: 0; }
+.t-summary dt { color: var(--mist); font-size: 12px; }
+.t-summary dd { margin: 0; font-variant-numeric: tabular-nums; }
+.t-summary code { font-size: 13px; color: var(--sand); }
+
+.table .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.table thead th.num { text-align: right; }
+.t-agent { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.t-badge { font-size: 11px; padding: 1px 7px; border-radius: var(--r-pill); border: 1px solid var(--hull-3); color: var(--mist); white-space: nowrap; }
+.t-rate strong { font-size: 16px; }
+.t-standings td { padding-top: 9px; padding-bottom: 9px; }
+.t-behaviour { font-size: 13px; }
+.t-behaviour th, .t-behaviour td { padding: 6px 5px; }
+.t-behaviour thead th { font-size: 12px; line-height: 1.2; }
+.t-behaviour th.grp { text-align: center; border-bottom: 1px solid var(--hull-3); }
+.t-behaviour thead tr:first-child th { border-bottom-color: transparent; }
+.t-behaviour thead tr:first-child th.grp { border-bottom-color: var(--hull-3); }
+.t-warn { color: var(--sand); font-weight: 700; }
+.ratebar .expected { stroke: var(--sand); stroke-width: 2; stroke-dasharray: 2 2; }
+
+.t-legend { margin: 0; }
+.t-legend > span { vertical-align: middle; margin: 0 4px 0 8px; }
+.t-legend > span:first-child { margin-left: 0; }
+.t-key { display: inline-block; width: 16px; height: 8px; border-radius: 4px; }
+.t-key.fill { background: var(--rope); }
+.t-key.whisker { height: 2px; background: var(--foam); border-radius: 0; }
+.t-key.exp { width: 0; height: 14px; border-left: 2px dashed var(--sand); border-radius: 0; }
+.t-swatch { display: inline-block; width: 16px; height: 12px; border-radius: 3px; }
+.t-swatch.lo { background: rgba(44,127,194,.75); }
+.t-swatch.hi { background: rgba(217,164,65,.8); }
+.t-callout { margin: 0; padding: var(--s2) var(--s3); border-left: 3px solid var(--sand); background: rgba(233,214,164,.06); border-radius: 0 8px 8px 0; }
+
+.t-matrix { border-collapse: separate; border-spacing: 4px; font-size: 13px; }
+.t-matrix th { color: var(--mist); font-weight: 500; padding: 4px 8px; text-align: center; }
+/* DS15-03: equal columns (a short name no longer gets a half-width column) and names wrap at commas,
+   so a long spec doesn't push the cells off a phone screen */
+.t-matrix tbody th { text-align: right; color: var(--foam); max-width: 200px; }
+.t-matrix thead th[scope=col] { width: 144px; min-width: 144px; }
+.t-matrix th.corner { font-size: 12px; text-align: left; }
+.t-matrix td { min-width: 112px; padding: 8px 10px; border-radius: var(--r-piece); text-align: center; cursor: help; font-variant-numeric: tabular-nums; }
+.t-matrix td.diag, .t-matrix td.empty { background: var(--hull); color: var(--kelp); cursor: default; }
+.t-matrix td .rate { font-size: 17px; font-weight: 700; }
+.t-matrix td .meta { font-size: 11px; display: flex; gap: 6px; justify-content: center; }
+.t-matrix td.hot { color: #22180a; }
+.t-sig { color: var(--rope-hi); font-weight: 800; margin-left: 2px; }
+/* DS4-10: brass on the blue cells was 3.9:1; in cells the star takes the cell text colour */
+.t-matrix td .t-sig { color: inherit; }
+
+.t-seats { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); /* 250 px clipped the CI column at 1280 */ gap: var(--s3); }
+.t-mini { font-size: 13px; background: var(--hull); border-radius: 10px; overflow: hidden; }
+.t-mini caption { text-align: left; font-weight: 700; padding: 8px 8px 2px; caption-side: top; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.t-mini th, .t-mini td { padding: 4px 8px; }
+.t-seat { display: inline-flex; align-items: center; gap: 6px; }
+
+.chart .bar { fill: var(--rope); opacity: .85; }
+.chart .bar.on { fill: var(--rope-hi); opacity: 1; }
+.t-across { display: flex; flex-direction: column; gap: var(--s3); padding-top: var(--s3); border-top: 1px solid var(--hull-3); }
+.linkish { background: none; border: 0; padding: 0; color: var(--rope-hi); cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+
+@media (min-width: 1700px) {
+  .tournaments { grid-template-columns: 320px minmax(0, 1fr); }
+}
+
+/* DS7-07: the Games histograms are small; two per row at 1024 instead of a 4 x 600 px column */
+.t-section .charts.t-hists { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+/* Lab tabs round: grouped sidebar, one-line meta, detail behind <details>. */
+.t-list .t-group { margin-top: var(--s2); }
+.t-list .t-group > summary { padding: 4px 2px; font-size: 14px; }
+.t-list .t-group > summary .small { margin-left: auto; }
+.t-list .t-group .run-item { width: 100%; margin-top: 4px; }
+.t-meta { margin: 0; }
+.t-more { margin-top: var(--s2); }
+.t-more > summary .small { font-weight: 400; }
+
+/* DS26-02: on a phone the 180 px bar pushed the win-rate number out of view; drop the bar so the number sits under the header.
+   DS29-03: up to 1200 px too, where the bar pushed Avg VP and BT-Elo behind the scroll fade (750 px table in a 596 px card at 1024). */
+@media (max-width: 1200px) {
+  .t-standings td:nth-child(2), .t-standings th:nth-child(3) { display: none; }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Hexhaven analysis board",
+  "short_name": "Hexhaven",
+  "description": "Track a real Catan game at the table and ask for the best move.",
+  "start_url": "/#/analysis",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b2f42",
+  "theme_color": "#142630"
+}

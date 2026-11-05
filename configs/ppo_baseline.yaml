@@ -1,0 +1,41 @@
+# Baseline: masked PPO vs random + self-play pool, VP potential shaping.
+# ~1 hour on a 16-core Apple Silicon laptop with 7 rollout workers.
+run_name: ppo_baseline
+seed: 1
+total_steps: 40000000
+device: cpu
+num_workers: 7
+envs_per_worker: 32
+rollout_steps: 65536
+learner_seats: 1
+env:
+  num_players: 4
+  max_turns: 500
+  win_reward: 1.0
+  loss_reward: 0.0
+  truncation: loss          # truncated games count as losses (reward truncation_reward)
+  truncation_reward: 0.0
+  shaping_vp: 1.0           # Phi = VP/10; Phi(terminal)=0 (policy invariant)
+  shaping_prod: 0.0
+  auto_forced: true
+model: {hidden: 512, blocks: 2}
+ppo:
+  gamma: 0.999
+  gae_lambda: 0.95
+  lr: 0.0003
+  anneal_lr: false
+  epochs: 3
+  minibatch: 4096
+  clip: 0.2
+  vf_coef: 0.5
+  ent_coef: 0.01
+  max_grad_norm: 0.5
+  target_kl: 0.03
+  norm_adv: true
+opponents:
+  - {type: agent, name: random, weight: 0.5}
+  - {type: self, weight: 0.25}
+  - {type: pool, weight: 0.25}    # frozen snapshots; falls back to the others while empty
+pool: {snapshot_every: 10, max_size: 8}
+eval: {every: 20, games: 100, opponents: [random], workers: 4, max_turns: 500, seed: 1000, deterministic: false}
+checkpoint_every: 10

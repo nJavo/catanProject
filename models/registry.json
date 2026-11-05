@@ -1,0 +1,183 @@
+{
+ "version": 1,
+ "entries": [
+  {
+   "id": "random",
+   "name": "random",
+   "kind": "heuristic",
+   "spec": "random",
+   "checkpoint": null,
+   "sha256": null,
+   "source_run": null,
+   "update": null,
+   "step": null,
+   "created": "2026-11-04T00:05:14",
+   "git_commit": "551d101380b98116149a238178e0e7d4df85722e",
+   "status": "promoted",
+   "anchor": true,
+   "eval": null
+  },
+  {
+   "id": "basic",
+   "name": "basic",
+   "kind": "heuristic",
+   "spec": "basic",
+   "checkpoint": null,
+   "sha256": null,
+   "source_run": null,
+   "update": null,
+   "step": null,
+   "created": "2026-11-04T00:05:14",
+   "git_commit": "551d101380b98116149a238178e0e7d4df85722e",
+   "status": "promoted",
+   "anchor": true,
+   "eval": null
+  },
+  {
+   "id": "intermediate",
+   "name": "intermediate",
+   "kind": "heuristic",
+   "spec": "intermediate",
+   "checkpoint": null,
+   "sha256": null,
+   "source_run": null,
+   "update": null,
+   "step": null,
+   "created": "2026-11-04T00:05:14",
+   "git_commit": "551d101380b98116149a238178e0e7d4df85722e",
+   "status": "promoted",
+   "anchor": true,
+   "eval": null
+  },
+  {
+   "id": "search",
+   "name": "search",
+   "kind": "heuristic",
+   "spec": "search",
+   "checkpoint": null,
+   "sha256": null,
+   "source_run": null,
+   "update": null,
+   "step": null,
+   "created": "2026-11-04T00:05:14",
+   "git_commit": "551d101380b98116149a238178e0e7d4df85722e",
+   "status": "promoted",
+   "anchor": true,
+   "eval": null
+  },
+  {
+   "id": "jointb_gated-v1",
+   "name": "jointb_gated",
+   "kind": "rl",
+   "spec": "jointb_gated:checkpoint=models/jointb_best.pt,deterministic=true",
+   "checkpoint": "models/jointb_best.pt",
+   "sha256": "e2d5acc3747cae582daeaa698cc8791313fa10e396d2fdf7b06bf32361f54acc",
+   "source_run": null,
+   "update": 30,
+   "step": 491520,
+   "created": "2026-11-04T14:55:03",
+   "git_commit": "c7e7bb7f2fe6de01941d25f2af4f21256719015e",
+   "status": "promoted",
+   "anchor": false,
+   "eval": {
+    "promote": true,
+    "reasons": [],
+    "alpha": 0.05,
+    "champion_test": {
+     "kind": "mixed",
+     "lineup": [
+      "jointb_gated-v1",
+      "value_trade-v1",
+      "intermediate",
+      "intermediate"
+     ],
+     "cand_wins": 286,
+     "champ_wins": 211,
+     "games": 600,
+     "candidate": {
+      "wins": 286,
+      "games": 600,
+      "win_rate": 0.4766666666666667,
+      "ci95": [
+       0.4369774204697129,
+       0.5166528030856038
+      ]
+     },
+     "champion": {
+      "wins": 211,
+      "games": 600,
+      "win_rate": 0.3516666666666667,
+      "ci95": [
+       0.3145131925057866,
+       0.3907075143815827
+      ]
+     },
+     "sign_p": 0.0008842674516919349,
+     "better": true
+    },
+    "heuristic_tests": {
+     "basic": {
+      "candidate": {
+       "wins": 141,
+       "games": 200,
+       "win_rate": 0.705,
+       "ci95": [
+        0.6384115802925058,
+        0.7638615572809827
+       ]
+      },
+      "champion": {
+       "wins": 142,
+       "games": 200,
+       "win_rate": 0.71,
+       "ci95": [
+        0.6436239464268834,
+        0.7684607310874219
+       ]
+      },
+      "discordant": {
+       "candidate_only": 0,
+       "champion_only": 1
+      },
+      "mcnemar_p": 1.0,
+      "worse": false
+     },
+     "intermediate": {
+      "candidate": {
+       "wins": 153,
+       "games": 200,
+       "win_rate": 0.765,
+       "ci95": [
+        0.7015850701327535,
+        0.8184265467305365
+       ]
+      },
+      "champion": {
+       "wins": 133,
+       "games": 200,
+       "win_rate": 0.665,
+       "ci95": [
+        0.5970206277343806,
+        0.7267601903125736
+       ]
+      },
+      "discordant": {
+       "candidate_only": 46,
+       "champion_only": 26
+      },
+      "mcnemar_p": 0.024460907328324375,
+      "worse": false
+     }
+    },
+    "champion": "value_trade-v1",
+    "seed_blocks": {
+     "basic": 40,
+     "intermediate": 41,
+     "champion": 42
+    },
+    "games_per_test": 200
+   },
+   "status_changed": "2026-11-04T15:18:23"
+  }
+ ]
+}
