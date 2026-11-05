@@ -1,0 +1,40 @@
+/* Tokens copied from web/src/styles.css; the extension has no build step to share them. */
+:root {
+  --sea-abyss: #0b2f42; --hull: #142630; --hull-2: #1c3340; --hull-3: #26434f;
+  --rope: #d9a441; --rope-hi: #f2c14e; --foam: #edf3f2; --mist: #a9bec4; --sand: #e9d6a4; --danger: #e0533d;
+  --f-display: "Alegreya", Georgia, serif;
+  --f-ui: "Alegreya Sans", "Gill Sans", system-ui, sans-serif;
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
+  --r-piece: 6px; --r-panel: 14px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: var(--s3); width: 360px; background: var(--sea-abyss); color: var(--foam);
+  font: 15px/1.4 var(--f-ui); font-variant-numeric: lining-nums; }
+body.page { width: auto; max-width: 520px; margin: 0 auto; padding: var(--s4); }
+header { display: flex; justify-content: space-between; align-items: baseline; }
+h1 { font: 700 22px var(--f-display); margin: 0; }
+h2 { font: 700 15px var(--f-display); margin: var(--s3) 0 var(--s1); color: var(--sand); }
+a { color: var(--rope-hi); }
+.small { font-size: 13px; }
+.note { font-size: 13px; color: var(--mist); margin: var(--s1) 0 var(--s3); }
+.panel { background: var(--hull); border: 1px solid var(--hull-3); border-radius: var(--r-panel); padding: var(--s3); margin-bottom: var(--s3); }
+label { display: block; font-size: 13px; color: var(--mist); margin-bottom: var(--s2); }
+select, input { font: inherit; color: var(--foam); background: var(--hull-2); border: 1px solid var(--hull-3); border-radius: var(--r-piece); padding: var(--s1) var(--s2); }
+input[type="text"], select { width: 100%; margin-top: var(--s1); }
+fieldset { border: 0; padding: 0; margin: 0 0 var(--s2); display: flex; gap: var(--s1); }
+fieldset legend { font-size: 13px; color: var(--mist); margin-bottom: var(--s1); }
+fieldset label { flex: 1; margin: 0; font-size: 12px; }
+fieldset input { width: 100%; }
+.row { display: flex; gap: var(--s2); }
+.btn { display: inline-block; font: 500 15px var(--f-ui); color: var(--foam); background: var(--hull-2); border: 1px solid var(--hull-3);
+  border-radius: var(--r-piece); padding: var(--s2) var(--s3); cursor: pointer; text-decoration: none; }
+.btn.primary { background: var(--rope); border-color: var(--rope-hi); color: var(--hull); font-weight: 700; }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.btn:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--rope-hi); outline-offset: 2px; }
+.move { font: 700 18px var(--f-display); color: var(--rope-hi); margin: 0; }
+.alts { margin: var(--s1) 0; padding-left: var(--s4); color: var(--mist); font-size: 13px; }
+ul { margin: 0; padding-left: var(--s4); }
+.mist { color: var(--mist); font-size: 13px; }
+.warn { color: var(--sand); }
+.danger { color: var(--danger); }
+#status:empty { display: none; }

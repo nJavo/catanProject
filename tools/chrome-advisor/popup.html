@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Catan advisor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Catan advisor</h1>
+    <a href="options.html" target="_blank" class="small">Options</a>
+  </header>
+  <p class="note">Advisor for private games with friends who agree. Doesn't read or control colonist.io.</p>
+
+  <section class="panel">
+    <label>Analyze as
+      <select id="color" data-testid="color">
+        <option value="">(as read)</option>
+      </select>
+    </label>
+    <fieldset id="hand">
+      <legend>My hand (optional)</legend>
+      <label>Lumber <input type="number" min="0" max="19" data-res="0"></label>
+      <label>Brick <input type="number" min="0" max="19" data-res="1"></label>
+      <label>Wool <input type="number" min="0" max="19" data-res="2"></label>
+      <label>Grain <input type="number" min="0" max="19" data-res="3"></label>
+      <label>Ore <input type="number" min="0" max="19" data-res="4"></label>
+    </fieldset>
+    <div class="row">
+      <button id="go" class="btn primary" data-testid="go">Analyze this tab</button>
+      <button id="again" class="btn" data-testid="again" title="Send the last screenshot again with this colour and hand">Again with my hand</button>
+    </div>
+  </section>
+
+  <p id="status" role="status" aria-live="polite" data-testid="status"></p>
+
+  <section id="result" class="panel" hidden>
+    <h2>Suggested move</h2>
+    <p id="move" class="move" data-testid="move"></p>
+    <ol id="alts" class="alts"></ol>
+    <p id="notes" class="mist"></p>
+    <h2>Detected position</h2>
+    <ul id="position" data-testid="position"></ul>
+    <h2>Confidence</h2>
+    <ul id="confidence" data-testid="confidence"></ul>
+    <p id="reader" class="mist" data-testid="reader"></p>
+    <a id="open" class="btn" target="_blank" data-testid="open">Open in Analysis</a>
+  </section>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
