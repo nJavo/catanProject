@@ -1,0 +1,20 @@
+# ~1 minute end-to-end check of the training pipeline (not expected to learn much).
+run_name: smoke
+seed: 1
+total_steps: 100000
+device: cpu
+num_workers: 4
+envs_per_worker: 8
+rollout_steps: 8192
+env:
+  max_turns: 300
+  shaping_vp: 0.5
+model: {hidden: 128, blocks: 1}
+ppo: {epochs: 2, minibatch: 2048}
+opponents:
+  - {type: agent, name: random, weight: 0.6}
+  - {type: self, weight: 0.2}
+  - {type: pool, weight: 0.2}
+pool: {snapshot_every: 2, max_size: 4}
+eval: {every: 5, games: 40, workers: 4, max_turns: 300}
+checkpoint_every: 5

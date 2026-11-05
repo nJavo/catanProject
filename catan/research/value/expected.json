@@ -1,0 +1,43 @@
+{
+ "entry": "value_trade-v1",
+ "candidate": "value_trade:checkpoint=models/value_best.pt,deterministic=true",
+ "champion": "combo:checkpoint=models/combo_best.pt,deterministic=true",
+ "tests": {
+  "basic": {
+   "agents": [
+    "value_trade:checkpoint=models/value_best.pt,deterministic=true",
+    "basic",
+    "basic",
+    "basic"
+   ],
+   "rotation": "cyclic",
+   "block": 40,
+   "git_commit": "32ed65e622ea069c6a78aad9de9a875cd85240ed",
+   "wins": "11010111110010000111111111111100011011011111001001101110010000101100111111011111001011111111111111101111110111111111110111111101110101001100110111111110100111101110111001011001110101100111101111111101"
+  },
+  "intermediate": {
+   "agents": [
+    "value_trade:checkpoint=models/value_best.pt,deterministic=true",
+    "intermediate",
+    "intermediate",
+    "intermediate"
+   ],
+   "rotation": "cyclic",
+   "block": 41,
+   "git_commit": "32ed65e622ea069c6a78aad9de9a875cd85240ed",
+   "wins": "00001011100011100011111011010101011010110101100101100001011111111111001101110100001001101101110011010101101101111100111111111101110011111111110110011011010111011111111111111110111111110010011111110010"
+  },
+  "table": {
+   "agents": [
+    "value_trade:checkpoint=models/value_best.pt,deterministic=true",
+    "combo:checkpoint=models/combo_best.pt,deterministic=true",
+    "intermediate",
+    "intermediate"
+   ],
+   "rotation": "cyclic",
+   "block": 42,
+   "git_commit": "32ed65e622ea069c6a78aad9de9a875cd85240ed",
+   "wins": "11010000101101110000001011000100001100001111111011010111001110100000110011101100100101100111000011001110000111011111100000100001111001011001101010001010011011011111011111110101100010010100100110011001"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.pytest_cache/
+.hypothesis/
+.ruff_cache/
+
+# Web
+node_modules/
+web/dist/
+
+# Secrets
+.env
+results/online_admin_key
+
+# Local data: training runs, tournament results, saves, screenshots
+runs/
+results/
+data/
+
+# Checkpoints: only the shipped weights in models/ are tracked
+*.pt
+!models/jointb_best.pt
+!models/value_best.pt
+!models/league_best.pt
+!models/nego_best.pt
+!models/opp_best.pt
+!models/arch_best.pt
+!models/combo_best.pt
+!models/ppo_baseline.pt
+
+# Editors and tools
+.DS_Store
+.idea/
+.vscode/
+.claude/
